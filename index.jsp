@@ -7,17 +7,26 @@
 	request.setCharacterEncoding("utf-8");
 	DecimalFormat exFormat = new DecimalFormat("#,###,###,##0");
 	
+	Bean bean = new Bean();
+	String searchitem = null;
+	String searchcategory = null;
+
 	if((request.getAttribute("searchitem")) != null) {
-	Bean bean = (Bean) request.getAttribute("searchitem");
-	String searchitem = bean.getSearchitem();
+		bean = (Bean) request.getAttribute("searchitem");
+		searchitem = bean.getSearchitem();
 	}
 
 	if((request.getAttribute("searchcategory")) != null) {
-	Bean bean = (Bean) request.getAttribute("searchcategory");
-	String searchcategory = bean.getSearchcategory();
+		bean = (Bean) request.getAttribute("searchcategory");
+		searchcategory = bean.getSearchcategory();
 	}
-
  %>
+
+<%
+	if (session.getAttribute("login") == null){
+		response.sendRedirect("/toranoan/logout.jsp");
+	}
+%>
 
 <html>
 <head><title>出前出張サービス◆虎乃庵◆</title></head>
@@ -65,22 +74,23 @@
 </form>
 
 <%
-	if ((session.getAttribute("searchitem")) == null 
-		&& (session.getAttribute("searchcategory")) == null) {
+	if (searchitem == null 
+			&& searchcategory == null) {
+		searchitem = "指定なし";
+		searchcategory = "指定なし";
 	} else {
-		Bean bean = (Bean) session.getAttribute("searchitem");
-		String searchitem = bean.getSearchitem();
-		bean = (Bean) session.getAttribute("searchcategory");
-		String searchcategory = bean.getSearchcategory();
-		if (searchitem != "" ) {
-			if (searchcategory != null) {
-			} else {
+		if ("".equals(searchitem)) {
+			if (searchcategory == null) {
+				searchitem = "指定なし";
 				searchcategory = "指定なし";
+			} else {
+				searchitem = "指定なし";		
 			}
 		} else {
-			if ((session.getAttribute("searchcategory")) != null) {
-				searchitem = "指定なし";
-			} 
+			if (searchcategory == null) {
+				searchcategory = "指定なし";
+			} else {
+			}		
 		}
 %>
 <br>

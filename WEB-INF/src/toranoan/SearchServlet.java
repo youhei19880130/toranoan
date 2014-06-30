@@ -28,13 +28,13 @@ public class SearchServlet extends HttpServlet{
 		//アイテム名の検索
 		String searchword = request.getParameter("searchitem");
 		bean.setSearchitem(searchword);
-		session.setAttribute("searchitem", bean);
+		request.setAttribute("searchitem", bean);
 		
 		
 		//カテゴリの検索
 		String searchcategory = request.getParameter("searchcategory");
 		bean.setSearchcategory(searchcategory);
-		session.setAttribute("searchcategory", bean);
+		request.setAttribute("searchcategory", bean);
 		
 		
 /*		//並び替え

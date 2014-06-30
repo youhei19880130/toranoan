@@ -1,4 +1,4 @@
-package toranoan;
+/*package toranoan;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -89,3 +89,4 @@ public class DiscountDao {
 		}
 	}
 }
+*/

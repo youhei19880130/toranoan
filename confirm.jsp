@@ -1,5 +1,11 @@
 <%@page contentType="text/html; charset=utf-8"%>
 
+<%
+	if (session.getAttribute("login") == null){
+		response.sendRedirect("/toranoan/logout.jsp");
+	}
+%>
+
 <html>
 <head><title>出前出張サービス◆虎乃庵◆</title></head>
 <body>

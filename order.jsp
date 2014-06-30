@@ -15,6 +15,12 @@
 	}
 %>
 
+<%
+	if (session.getAttribute("login") == null){
+		response.sendRedirect("/toranoan/logout.jsp");
+	}
+%>
+
 <html>
 <head><title>出前出張サービス◆虎乃庵◆</title></head>
 <body>
@@ -45,20 +51,17 @@
 		<td>
 			<p><%=item %></p>
 			<form action="modify" method="POST">
-			<input type="button" name="<%=id %>_+" value="+1" onclick="1">
+			<input type="submit" name="submit" value="+1">
+			<input type="hidden" name="modify" value="<%=id %>_+">
 			</form>
 			<form action="modify" method="POST">
-			<input type="button" name="<%=id %>_-" value="-1">
+			<input type="submit" name="submit" value="-1">
+			<input type="hidden" name="modify" value="<%=id %>_-">
 			</form>
 			<form action="modify" method="POST">
-			<input type="button" name="<%=id %>_re" value="削除">
+			<input type="submit" name="submit" value="削除">
+			<input type="hidden" name="modify" value="<%=id %>_re">
 			</form>
-
-			<form action="" method="get">
-			<input type="submit" name="b1" value="button1">
-			<input type="submit" name="b2" value="button2">
-			</form>
-
 		</td>
 		<td align="right">\<%=exFormat.format(price) %></td>
 		<td align="center"><%=exFormat.format(volume) %></td>
@@ -82,6 +85,7 @@
 <p></p>
 <form action="search" method="POST">
 	<input type="submit" value="他にもご注文の方はこちら>>">
+	<input type="hidden" name="all" value="1">
 </form>
 </body>
 </html>

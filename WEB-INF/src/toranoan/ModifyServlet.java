@@ -21,9 +21,9 @@ public class ModifyServlet extends HttpServlet {
 			throws ServletException, IOException {
 //		response.setContentType("text/html; charset=utf-8");
 //		request.setCharacterEncoding("utf-8");
-		String amdf = (String) request.getParameter("name");
 		HttpSession session = request.getSession(false);
 		HashMap<String, Object> ordermap = (HashMap<String, Object>) session.getAttribute("ordermap");
+		String amdf = (String) request.getParameter("modify");
 		String[] mdf = amdf.split("_");
 		String mdfname = mdf[0];
 		String mdfact = mdf[1];
