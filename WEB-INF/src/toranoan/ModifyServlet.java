@@ -19,8 +19,6 @@ public class ModifyServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-//		response.setContentType("text/html; charset=utf-8");
-//		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession(false);
 		HashMap<String, Object> ordermap = (HashMap<String, Object>) session.getAttribute("ordermap");
 		String amdf = (String) request.getParameter("modify");
@@ -44,11 +42,10 @@ public class ModifyServlet extends HttpServlet {
 		}
 		session.setAttribute("ordermap", ordermap);
 		
-		
 		// 次に遷移するページ(初期値)
 		String nextPage = "/order.jsp";
-			
 		RequestDispatcher rd = request.getRequestDispatcher(nextPage);
 		rd.forward(request, response);
 	}
+	
 }

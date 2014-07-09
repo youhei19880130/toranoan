@@ -18,7 +18,7 @@
 
 	<servlet>
 		<servlet-name>search</servlet-name>
-		<servlet-class>toranoan.SearchServlet</servlet-class>
+		<servlet-class>toranoan.SearchServlet2</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>search</servlet-name>
@@ -68,6 +68,15 @@
 	<servlet-mapping>
 		<servlet-name>logout</servlet-name>
 		<url-pattern>/logout</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+ 	       <servlet-name>jsontest</servlet-name>
+  	      <servlet-class>toranoan.AjaxTestServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+    	<servlet-name>jsontest</servlet-name>
+    	<url-pattern>/jsontest/*</url-pattern>
 	</servlet-mapping>
 	
 	<session-config>

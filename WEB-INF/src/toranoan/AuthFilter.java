@@ -13,11 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public class AuthFilter implements Filter {
+	
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain){
 		try{
-
 			HttpSession session = ((HttpServletRequest)request).getSession(false);
-
 			if (session == null){
 				((HttpServletResponse)response).sendRedirect("/toranoan/logout.jsp");
 				return;

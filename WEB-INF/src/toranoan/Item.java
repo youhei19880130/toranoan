@@ -10,7 +10,6 @@ public class Item {
 	/**注文商品の数量*/
 	private int volume;
 	
-
 	public String toString() {
 		return super.toString()
 				+"id="+id

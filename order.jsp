@@ -22,11 +22,27 @@
 %>
 
 <html>
-<head><title>出前出張サービス◆虎乃庵◆</title></head>
+<head>
+	<title>出前出張サービス◆虎乃庵◆</title>
+	<style>
+    #map_canvas {
+		width: 500px;
+		height: 500px;
+	}
+    </style>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?libraries=places&sensor=false"></script>
+    <script type="text/javascript" src="/toranoan/map.js"></script>
+   	<script type="text/javascript" src="/toranoan/jquery-1.11.1.js"></script>
+	<script type="text/javascript" src="/toranoan/controlledjquery.js"></script>
+</head>
 <body>
-<form action="logout" method="POST" name="logout">
-	<input type="submit" value="ログアウト">
+<form action="logout" method="POST" name="logout" id="submitform_logout">
+	<input type="button" value="ログアウト" id="btn_logout">
 </form>
+<div style="float:right;margin:50 200 0 0;">
+	近くのお店
+	<div id="map_canvas"></div>
+</div>
 <h2>注文内容</h2>
 <table border="1" width="500" cellspacing="0" cellpadding="5" bordercolor="#333333">
 	<tr bgcolor="#EE0000">
@@ -79,13 +95,12 @@
 <p>
 こちらでよろしければ、確認ボタンを押してください。
 </p>
-<form action="confirm" method="POST">
-	<input type="submit" value="確認">
+<form action="confirm" method="POST" id="submitform_confirm">
+	<input type="button" value="確認" id="btn_confirm">
 </form>
 <p></p>
-<form action="search" method="POST">
-	<input type="submit" value="他にもご注文の方はこちら>>">
-	<input type="hidden" name="all" value="1">
+<form action="search" method="POST" id="submitform_search">
+	<input type="button" value="他にもご注文の方はこちら>>" id="btn_search">
 </form>
 </body>
 </html>

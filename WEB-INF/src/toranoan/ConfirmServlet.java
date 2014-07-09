@@ -3,6 +3,7 @@ package toranoan;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public class ConfirmServlet extends HttpServlet{
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		doPost(request,response);
@@ -20,9 +22,9 @@ public class ConfirmServlet extends HttpServlet{
 			throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
 	
-		//　注文情報の送信
+		//　注文情報(ORDERLIST)の送信
 		HashMap<String, Object> ordermap = (HashMap<String, Object>) session.getAttribute("ordermap");
-		Iterator it = ordermap.keySet().iterator();
+		Iterator<String> it = ordermap.keySet().iterator();
 		int amount = 0;
         while(it.hasNext()){
             Object obj = it.next();
@@ -32,7 +34,7 @@ public class ConfirmServlet extends HttpServlet{
         }
         int a = ConfirmDao.postOrder(amount);
 		
-		//　注文詳細情報の送信
+		//　注文詳細情報(ORDERITEMLIST)の送信
 		it = ordermap.keySet().iterator();
         while(it.hasNext()){
             Object obj = it.next();
@@ -46,8 +48,8 @@ public class ConfirmServlet extends HttpServlet{
 		
 		// 次に遷移するページ(初期値)
 		String nextPage = "/confirm.jsp";
-			
 		RequestDispatcher rd = request.getRequestDispatcher(nextPage);
 		rd.forward(request, response);
 	}	
+	
 }

@@ -19,7 +19,6 @@ public class LogoutServlet extends HttpServlet {
 			throws IOException, ServletException{
 		HttpSession session = request.getSession(true);
 		session.invalidate();
-		
 		response.sendRedirect("/toranoan/logout.jsp");
 	}
 	

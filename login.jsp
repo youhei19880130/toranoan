@@ -2,12 +2,16 @@
 <%@page import="toranoan.AuthServlet"%>
 
 <html>
-<head><title>ログインページ</title></head>
+<head>
+	<title>ログインページ</title>
+	<script type="text/javascript" src="/toranoan/jquery-1.11.1.js"></script>
+	<script type="text/javascript" src="/toranoan/controlledjquery.js"></script>
+</head>
 <body>
 <h3>ログインページ</h3>
 <div style="width:300px; background-color:#F5E8E8; padding:10 0 10 10;">
 <p><B>ID/PASSを記入してください。</B></p>
-<form action="login" method="POST">
+<form action="login" method="POST" id="submitform_login">
 	<table>
 		<tr>
 			<td>ID</td>
@@ -37,8 +41,7 @@
       	session.setAttribute("status", null);
     } 
 %>
-	<input type="submit" value="ログイン">
-	<input type="hidden" name="all" value="1">
+	<input type="button" value="ログイン" id="btn_login">
 </form>
 </div>
 </body>

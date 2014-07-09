@@ -7,33 +7,16 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
- * 検索を操作するビジネスロジック
- */
 public class SearchDao {
-	/*
-	 * シングルトンのインスタンス
-	 */
-	private static SearchDao controller = new SearchDao();
-	
-	/*
-	 * このクラスのインスタンスを取得します。
-	 * 
-	 * @return SerchItemのインスタンス
-	 */
-	public static SearchDao getInstance() {
-		return controller;
-	}
 
 	private static String searchitem;
     private static String searchcategory;
-//    private static String searchorder;
 	
 	/*
 	 * 最近の(というか全部の)トピックを取得します。
 	 * @return トピックのリスト
 	 */
-	public List getSearch(String searchitem,String searchcategory/*,String seachorder*/) {
+	public List<String> getSearch(String searchitem,String searchcategory) {
 		String sql;
 		if (searchcategory == null) {
 			sql = "SELECT ID,ITEM,PRICE,CATEGORY,HOTCOLD FROM ITEMLIST WHERE ITEM LIKE '%"
@@ -42,25 +25,7 @@ public class SearchDao {
 			sql = "SELECT ID,ITEM,PRICE,CATEGORY,HOTCOLD FROM ITEMLIST WHERE ITEM LIKE '%"
 				+searchitem+"%' and CATEGORY = '"+searchcategory+"' ORDER BY PRICE ASC";
 		}
-/*		if (searchorder != null) {
-			if (searchcategory == null) {
-				sql = "SELECT ID,ITEM,PRICE,CATEGORY,HOTCOLD FROM ITEMLIST WHERE ITEM LIKE '%"
-						+searchitem+"%' ORDER BY PRICE "+searchorder;
-			} else {
-				sql = "SELECT ID,ITEM,PRICE,CATEGORY,HOTCOLD FROM ITEMLIST WHERE ITEM LIKE '%"
-						+searchitem+"%' and CATEGORY = '"+searchcategory+"' ORDER BY PRICE "+searchorder;
-			}
-		} else {
-			if (searchcategory == null) {
-				sql = "SELECT ID,ITEM,PRICE,CATEGORY,HOTCOLD FROM ITEMLIST WHERE ITEM LIKE '%"
-						+searchitem+"%' ORDER BY PRICE ASC";
-			} else {
-				sql = "SELECT ID,ITEM,PRICE,CATEGORY,HOTCOLD FROM ITEMLIST WHERE ITEM LIKE '%"
-						+searchitem+"%' and CATEGORY = '"+searchcategory+"' ORDER BY PRICE ASC";			
-			}
-		}*/
-		List searchsqllist = new ArrayList();
-		
+		List searchsqllist = new ArrayList<String>();
 		Connection con = null;
 		Statement smt = null;
 		ResultSet rs = null;
@@ -102,11 +67,4 @@ public class SearchDao {
 		return searchsqllist;
 	}
 	
-	public static void main(String[] args) {
-		SearchDao ctrl = new SearchDao();
-		List searchlist = ctrl.getSearch(searchitem, searchcategory/*,searchorder*/);
-		for (int i = 0; i<searchlist.size(); i++) {
-			System.out.println(searchlist.get(i));
-		}
-	}		
 }

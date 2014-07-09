@@ -6,13 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import com.sun.org.apache.regexp.internal.recompile;
-
 public class ConfirmDao {
 	
 	private static final String LASTID_SQL = "SELECT LAST_INSERT_ID() FROM ORDERLIST";
 	private static final String ORDERITEMLIST_SQL = "INSERT INTO ORDERITEMLIST (ORDERID,ITEMID,ITEM,PRICE,UNIT) VALUES (?,?,?,?,?)";
-
 
 	public static int postOrder(int amount) {
 		String sqlin = "INSERT INTO ORDERLIST (AMOUNT) VALUES ("+amount+")";
@@ -30,7 +27,6 @@ public class ConfirmDao {
 			a = rs.getInt(1);
 		} catch (SQLException e) {
 			e.printStackTrace();
-//			System.out.println("SQLException:" + e.getMessage());
 		} finally {
 			if (rs != null) {
 				try {
@@ -53,7 +49,6 @@ public class ConfirmDao {
 		}
 		return a;
 	}
-	
 	
 	public static void postOrderitem(String[] strBind) {
 		String strSQL =ORDERITEMLIST_SQL;
@@ -92,4 +87,5 @@ public class ConfirmDao {
 			}
 		}
 	}
+	
 }
