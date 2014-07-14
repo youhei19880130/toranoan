@@ -22,12 +22,15 @@ public class Bean {
 	private String number;
 
 	public String toString() {
-		return super.toString()
-				+"id="+id
+		return "id="+id
 				+",item="+item
 				+",price="+price
 				+",category="+category
 				+",hotcold="+hotcold
+				+",searchitem="+searchitem
+				+",searchcategory="+searchcategory
+				+",searchorder="+searchorder
+				+",number="+number
 				;
 	}
 

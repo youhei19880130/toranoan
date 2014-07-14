@@ -73,7 +73,7 @@
 <div id="loading"></div>
 <div id="result"></div>
 
-<%
+<!-- <%
 	if (searchitem == null 
 			&& searchcategory == null) {
 		searchitem = "指定なし";
@@ -139,6 +139,6 @@
 </form>
 <%
 	}
-%>
+%> -->
 </body>
 </html>

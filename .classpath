@@ -9,6 +9,6 @@
 	<classpathentry kind="src" path="WEB-INF/src"/>
 	<classpathentry kind="src" output="work" path="work"/>
 	<classpathentry kind="lib" path="C:/Users/A12777/workspace/toranoan/WEB-INF/lib/mysql-connector-java-5.1.30.jar"/>
-	<classpathentry kind="lib" path="C:/Users/A12777/Desktop/jsonic-1.0.5/jsonic-1.0.5.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="WEB-INF/classes"/>
 </classpath>

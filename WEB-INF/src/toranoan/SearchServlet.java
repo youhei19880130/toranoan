@@ -1,9 +1,9 @@
 package toranoan;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -25,22 +25,22 @@ public class SearchServlet extends HttpServlet{
 		//メニュー名の検索
 		String searchword = request.getParameter("searchitem");
 		bean.setSearchitem(searchword);
-		request.setAttribute("searchitem", bean);
 		
 		//カテゴリの検索
 		String searchcategory = request.getParameter("searchcategory");
-		bean.setSearchcategory(searchcategory);
-		request.setAttribute("searchcategory", bean);		
+		bean.setSearchcategory(searchcategory);		
 		
 		//検索結果の表示
 		SearchDao itemsearcher = new SearchDao();
-		List<String> itemresult =  (List<String>) itemsearcher.getSearch(searchword,searchcategory);
+		List itemresult =  (List) itemsearcher.getSearch(searchword,searchcategory);
 		session.setAttribute("itemresult", itemresult);
-	
-		// 次に遷移するページ(初期値)
-		String nextPage = "/index.jsp";
-		RequestDispatcher rd = request.getRequestDispatcher(nextPage);
-		rd.forward(request, response);
-	}
-	
+		
+		//整形
+		StringBuffer sb = new StringBuffer();
+		sb = SearchResult.searchResult(searchcategory, searchword, itemresult);
+		
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.print(sb);
+	}	
 }

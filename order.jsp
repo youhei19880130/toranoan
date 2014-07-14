@@ -99,8 +99,8 @@
 	<input type="button" value="確認" id="btn_confirm">
 </form>
 <p></p>
-<form action="search" method="POST" id="submitform_search">
-	<input type="button" value="他にもご注文の方はこちら>>" id="btn_search">
+<form action="/toranoan/index.jsp" method="POST" id="goto_submitform_search">
+	<input type="button" value="他にもご注文の方はこちら>>" id="goto_btn_search">
 </form>
 </body>
 </html>

@@ -18,7 +18,7 @@
 
 	<servlet>
 		<servlet-name>search</servlet-name>
-		<servlet-class>toranoan.SearchServlet2</servlet-class>
+		<servlet-class>toranoan.SearchServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>search</servlet-name>

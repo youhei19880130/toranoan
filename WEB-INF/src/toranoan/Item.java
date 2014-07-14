@@ -11,8 +11,7 @@ public class Item {
 	private int volume;
 	
 	public String toString() {
-		return super.toString()
-				+"id="+id
+		return "id="+id
 				+",item="+item
 				+",price="+price
 				+",volume="+volume
