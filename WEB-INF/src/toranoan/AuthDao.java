@@ -10,12 +10,12 @@ public class AuthDao {
 
 	private static final String IDPASS_SQL = "SELECT USERPASS FROM USERLIST WHERE USERID = ? and USERPASS = ? ";
 
-	public static boolean authUser(String authid, String authpass) {
-		if (authid == null || authid.length() == 0 || authpass == null || authpass.length() == 0){
-			return false;
+	public static String returnCorrectPass(String entryid, String entrypass) {
+		if (entryid == null || entryid.length() == 0 || entrypass == null || entrypass.length() == 0){
+			return null;
 		} 
 		String strSQL = IDPASS_SQL;
-		String[] strBind = {authid,authpass};
+		String[] strBind = {entryid,entrypass};
 		Connection con = null;
 		Statement smt = null;
 		ResultSet rs = null;
@@ -29,9 +29,10 @@ public class AuthDao {
 			}
 			rs = ps.executeQuery();
 		    if (rs.next()){
-		    	return true;
+		    	String correctpass = rs.getString("USERPASS");
+		    	return correctpass;
 		    }else{
-		    	return false;
+		    	return null;
 		    }			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -55,7 +56,7 @@ public class AuthDao {
 				}
 			}
 		}
-	return false;
+	return null;
 	}
 	
 }

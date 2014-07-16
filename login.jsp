@@ -15,11 +15,11 @@
 	<table>
 		<tr>
 			<td>ID</td>
-			<td><input type="text" name="authid" size="30"></td>
+			<td><input type="text" name="entryid" size="30"></td>
 		</tr>
 		<tr>
 			<td>PASS</td>
-			<td><input type="password" name="authpass" size="30"></td>
+			<td><input type="password" name="entrypass" size="30"></td>
 		</tr>
 	</table>
 <%
